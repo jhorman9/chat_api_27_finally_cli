@@ -1,11 +1,11 @@
-import express from "express";
-import morgan from "morgan";
-import cors from "cors";
-import 'dotenv/config';
+const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 
-const PORT = 8000;
+const PORT = process.env.PORT | 8080;
 
 app.use(express.json());
 app.use(morgan('tiny'));
@@ -17,4 +17,4 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}: http://localhost:${PORT}/`);
-});                 
+});
