@@ -28,6 +28,10 @@ Commands:
   npx sequelize-cli model:generate --name Conversation --attributes title:string,conversationImage:string,"type:enum{single,group}",createdBy:integer
   npx sequelize-cli model:generate --name Message --attributes content:string,senderId:integer,conversationId:integer
 
+  ---------- Al terminar las migraciones y relaciones ----------
+
+  
+
 Options:
   --version  Show version number                                                  [boolean]
   --help     Show help      
