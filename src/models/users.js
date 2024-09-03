@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Users.hasMany(models.Message, { foreignKey: 'senderId' })
+      Users.hasMany(models.Conversation, { foreignKey: 'userId' })
+      Users.belongsToMany(models.Conversation, { through: 'Participants' })
     }
   }
   Users.init({
@@ -23,7 +25,9 @@ module.exports = (sequelize, DataTypes) => {
     validEmail: DataTypes.BOOLEAN
   }, {
     sequelize,
-    modelName: 'Users'
+    modelName: 'Users',
+    paranoid: true,
+    deletedAt
   });
   return Users;
 };

@@ -19,20 +19,25 @@ module.exports = {
       email: {
         type: Sequelize.STRING(50),
         unique: true,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          isEmail: true
+        }
       },
       avatar: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: 'https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars.png'
       },
       password: {
         type: Sequelize.STRING,
         allowNull: true
       },
       description: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
       validEmail: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
@@ -41,6 +46,12 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      deleteAt:{
+        type: Sequelize.DATE,
+        defaultValue: null,
+        allowNull: true,
+        onDelete: 'SET NULL'
       }
     });
   },
